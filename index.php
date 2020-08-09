@@ -7,7 +7,9 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>INCIDENT REPORTER</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     </head>
     <body>
         <?php require_once 'process.php';
@@ -16,12 +18,14 @@ and open the template in the editor.
         ?>
         
         <?php  
-            if(isset($_SESSION['message'])): 
+            if(isset($_SESSION['message'])): ?>
+        <div class="alert alert-<?=$_SESSION['msg_type']?>">
+            <?php
                 echo $_SESSION['message'];
                 unset($_SESSION['message']);
             endif;  
         ?>
-        
+        </div>
         <?php
         
         $mysqli = new mysqli('localhost', 'root', '', 'one') or die (mysqli_error($mysqli));
@@ -36,8 +40,8 @@ and open the template in the editor.
                  <td><?php echo $row['name']; ?></td>
                  <td><?php echo $row['surname']; ?></td>
                  <td>
-                     <a href="index.php?edit=<?php echo $row['id']; ?>">EDIT</a>
-                     <a href="process.php?delete=<?php echo $row['id']; ?>">DELETE</a>
+                     <a href="index.php?edit=<?php echo $row['id']; ?>" class="btn btn-info">EDIT</a>
+                     <a href="process.php?delete=<?php echo $row['id']; ?>" class="btn btn-danger">DELETE</a>
                  </td>
              </tr>
 
@@ -54,9 +58,9 @@ and open the template in the editor.
             <?php
             if($update == true):
                 ?>
-            <button type="submit" name="update">Edit</button>                
+            <button type="submit" name="update" class="btn btn-info">Edit</button>                
             <?php         else:      ?>
-            <button type="submit" name="save">Save</button>
+            <button type="submit" name="save" class="btn btn-primary">Save</button>
             <?php         endif; ?>
         </form>
     </body>
