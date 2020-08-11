@@ -1,0 +1,18 @@
+
+body {
+ background-image: url('/images/background.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: gray;
+}
+
+#displayLists {
+  background-color: gray;
+  width: 50%;
+}
+
+#displayLists td{
+    color: white;
+}
